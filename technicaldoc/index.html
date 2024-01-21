@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="http://127.0.0.1:8000/technicaldoc/">
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Technical doc - My AREA</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Area Technical Documentation", url: "#_top", children: [
+              {title: "I. Project Overview", url: "#i-project-overview" },
+              {title: "II. Libraries Used", url: "#ii-libraries-used" },
+              {title: "III. Project Structure", url: "#iii-project-structure" },
+              {title: "IV. APIs Used", url: "#iv-apis-used" },
+              {title: "V. Database Structure", url: "#v-database-structure" },
+              {title: "VI. Server Endpoints", url: "#vi-server-endpoints" },
+              {title: "VII. Project Build", url: "#vii-project-build" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../frontend/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../frontend/" class="btn btn-xs btn-link">
+        FrontEnd
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../userguide/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../userguide/" class="btn btn-xs btn-link">
+        User's Guide
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="area-technical-documentation">Area Technical Documentation</h1>
+<p>Authors: Jaurio DANSOU, Leobasthene LIMA, Mohamed ONIFADE, Déo-Gratias PATINVOH, Ishola AREMOU, Zaidane KODJOGBE</p>
+<h2 id="i-project-overview">I. Project Overview</h2>
+<p>This is the technical documentation that provides a detailed explanation of the technical aspects and code of the project. For instructions on how to use the application, please refer to the provided user's guide.</p>
+<p>The AREA project aims to create a software suite that functions similarly to IFTTT and/or Zapier. The suite is divided into three parts:</p>
+<ul>
+<li>Server: Implements all the features.</li>
+<li>Web Application: Allows users to access the application from a browser.</li>
+<li>Mobile Application: Allows users to access the application from a mobile phone.</li>
+</ul>
+<p>The project utilizes the following languages and technologies:</p>
+<ul>
+<li>Server: Node.js with Express and MongoDB.</li>
+<li>Web Application: Vue.js.</li>
+<li>Mobile Application: Flutter.</li>
+</ul>
+<h2 id="ii-libraries-used">II. Libraries Used</h2>
+<p>The server is built with MongoDB as the database manager and utilizes Passport.js for managing user authentication on different services of the application.</p>
+<h2 id="iii-project-structure">III. Project Structure</h2>
+<p>The project is structured into three directories, each containing the code for the corresponding part: Frontweb, Mobile, and Server.</p>
+<p>The project is built using Docker, which will be further detailed in the next section.</p>
+<h2 id="iv-apis-used">IV. APIs Used</h2>
+<p>The project currently utilizes the following APIs:</p>
+<ul>
+<li>OpenWeather API (https://openweathermap.org/api)</li>
+<li>Facebook API (https://developers.facebook.com/docs/graph-api)</li>
+</ul>
+<h2 id="v-database-structure">V. Database Structure</h2>
+<p>The project uses MongoDB as the database manager, integrated with Node.js and Express to handle interactions between the front-end server and the API server. Prisma is used to manage interactions between the application and the database.</p>
+<p>The database consists of several models, including:</p>
+<ul>
+<li>User (model for users using Google OAuth2):</li>
+<li>id: Unique ID (type: String)</li>
+<li>googleId: Unique ID for Google account (type: String)</li>
+<li>name: User name (type: String)</li>
+<li>
+<p>email: Email address (type: String)</p>
+</li>
+<li>
+<p>LogInData (model for users using normal authentication):</p>
+</li>
+<li>id: Unique ID (type: String)</li>
+<li>name: User name (type: String)</li>
+<li>email: Email address (type: String)</li>
+<li>password: Unique password for the user (type: String)</li>
+</ul>
+<h2 id="vi-server-endpoints">VI. Server Endpoints</h2>
+<p>The server provides the following endpoints:</p>
+<ul>
+<li>GET: /start-auth - Endpoint to initiate the authorization process.</li>
+<li>GET: /callback - Redirection endpoint after authorization.</li>
+<li>POST: /pub - Endpoint to allow users to post messages on Facebook.</li>
+<li>GET: /auth/google - Google authentication endpoint.</li>
+<li>GET: /auth/google/callback - URL redirection for Google callback.</li>
+<li>GET: /auth/google/failure - URL redirection for authentication failure.</li>
+<li>GET: /auth/protected - URL redirection for successful authentication.</li>
+<li>GET: /auth/logout - URL redirection for logging out.</li>
+<li>POST: /signup - Endpoint for the signup page.</li>
+<li>POST: /login - Endpoint for the login page.</li>
+</ul>
+<h2 id="vii-project-build">VII. Project Build</h2>
+<p>The project is built using Docker. The project structure separates the back-end, web, and mobile servers, with a Dockerfile in each folder and a docker-compose.yml file at the root.</p>
+<p>The docker-compose.yml file calls the Dockerfile in each source folder (/server/, /frontweb/, &amp; /mobile/) to build the entire project and launch the servers.</p>
+<ul>
+<li>Front Server: localhost:8081</li>
+<li>Back Server: localhost:8080</li>
+<li>Mobile APK Download: localhost:8081/client.apk</li>
+</ul>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../frontend/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../frontend/" class="btn btn-xs btn-link">
+        FrontEnd
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../userguide/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../userguide/" class="btn btn-xs btn-link">
+        User's Guide
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
